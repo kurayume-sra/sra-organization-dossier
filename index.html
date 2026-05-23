@@ -87,14 +87,16 @@ html, body{
     transition:0.25s ease;
 
     user-select:none;
+
+    display:block;
 }
+
+/* ===== ZOOM MODE ===== */
 
 .slide.zoomed{
 
     justify-content:flex-start;
     align-items:flex-start;
-
-    overflow:auto;
 }
 
 .slide.zoomed img{
@@ -105,9 +107,9 @@ html, body{
     width:1800px;
     height:auto;
 
-    cursor:zoom-out;
-
     margin:40px;
+
+    cursor:zoom-out;
 }
 
 .overlay{
@@ -172,10 +174,6 @@ html, body{
 
 .next{
     right:18px;
-}
-
-.slide.zoomed ~ .nav{
-    display:none;
 }
 
 </style>
@@ -273,6 +271,8 @@ viewer.addEventListener('scroll', () => {
 
     updateCounter();
 });
+
+/* ===== CLICK ZOOM ===== */
 
 document.querySelectorAll('.slide')
 .forEach(slide => {
