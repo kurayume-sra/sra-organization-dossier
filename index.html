@@ -32,11 +32,11 @@ html, body{
     width:100%;
     height:100%;
 
-    overflow:hidden;
-
     background:black;
 
     color:white;
+
+    overflow:hidden;
 
     font-family:
     "Times New Roman", serif;
@@ -71,40 +71,21 @@ html, body{
 
     display:flex;
 
-    justify-content:center;
+    justify-content:flex-start;
     align-items:flex-start;
 }
 
 .slide img{
 
-    width:100%;
+    width:auto;
     height:auto;
 
-    object-fit:contain;
-
-    cursor:zoom-in;
-
-    transition:0.3s ease;
-
-    margin:auto;
+    max-width:none;
+    max-height:none;
 
     display:block;
-}
 
-.slide.zoomed{
-
-    align-items:flex-start;
-}
-
-.slide.zoomed img{
-
-    width:200%;
-
-    max-width:none;
-
-    cursor:zoom-out;
-
-    margin-top:40px;
+    margin:auto;
 }
 
 .overlay{
@@ -266,18 +247,6 @@ viewer.addEventListener('scroll', () => {
     );
 
     updateCounter();
-});
-
-document.querySelectorAll('.slide')
-.forEach(slide => {
-
-    const img = slide.querySelector('img');
-
-    img.addEventListener('click', () => {
-
-        slide.classList.toggle('zoomed');
-    });
-
 });
 
 </script>
