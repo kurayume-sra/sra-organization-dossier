@@ -63,50 +63,48 @@ html, body{
     width:100vw;
     height:100vh;
 
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
+    overflow:auto;
 
     scroll-snap-align:start;
 
     background:black;
 
-    overflow:auto;
-}
-
-.image-wrapper{
-
     display:flex;
 
     justify-content:center;
-    align-items:center;
-
-    min-width:100%;
-    min-height:100%;
+    align-items:flex-start;
 }
 
 .slide img{
 
-    max-width:100%;
-    max-height:100%;
+    width:100%;
+    height:auto;
 
     object-fit:contain;
 
-    background:black;
-
     cursor:zoom-in;
 
-    transition:transform 0.3s ease;
+    transition:0.3s ease;
 
-    transform-origin:center center;
+    margin:auto;
+
+    display:block;
 }
 
-.slide img.zoomed{
+.slide.zoomed{
 
-    transform:scale(2);
+    align-items:flex-start;
+}
+
+.slide.zoomed img{
+
+    width:200%;
+
+    max-width:none;
 
     cursor:zoom-out;
+
+    margin-top:40px;
 }
 
 .overlay{
@@ -203,27 +201,19 @@ onclick="moveSlide(1)">
 <div class="viewer" id="viewer">
 
 <div class="slide">
-<div class="image-wrapper">
 <img src="①SRA表紙.png">
 </div>
-</div>
 
 <div class="slide">
-<div class="image-wrapper">
 <img src="②組織図.png">
 </div>
-</div>
 
 <div class="slide">
-<div class="image-wrapper">
 <img src="③組織人物紹介.png">
 </div>
-</div>
 
 <div class="slide">
-<div class="image-wrapper">
 <img src="④監視対象と拠点紹介.png">
-</div>
 </div>
 
 </div>
@@ -278,12 +268,14 @@ viewer.addEventListener('scroll', () => {
     updateCounter();
 });
 
-document.querySelectorAll('.slide img')
-.forEach(img => {
+document.querySelectorAll('.slide')
+.forEach(slide => {
+
+    const img = slide.querySelector('img');
 
     img.addEventListener('click', () => {
 
-        img.classList.toggle('zoomed');
+        slide.classList.toggle('zoomed');
     });
 
 });
