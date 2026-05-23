@@ -71,6 +71,8 @@ html, body{
     scroll-snap-align:start;
 
     background:black;
+
+    overflow:auto;
 }
 
 .slide img{
@@ -81,6 +83,17 @@ html, body{
     object-fit:contain;
 
     background:black;
+
+    cursor:zoom-in;
+
+    transition:transform 0.3s ease;
+}
+
+.slide img.zoomed{
+
+    transform:scale(1.8);
+
+    cursor:zoom-out;
 }
 
 .overlay{
@@ -242,6 +255,16 @@ viewer.addEventListener('scroll', () => {
     );
 
     updateCounter();
+});
+
+document.querySelectorAll('.slide img')
+.forEach(img => {
+
+    img.addEventListener('click', () => {
+
+        img.classList.toggle('zoomed');
+    });
+
 });
 
 </script>
